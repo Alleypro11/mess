@@ -1,68 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>For You ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
 
-    <style>
-        body{
-            background: #ffd6e7;
-            font-family: Arial;
-            text-align: center;
-            padding-top: 100px;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .card{
-            background: white;
-            width: 350px;
-            margin: auto;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family: Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffc3a0, #ffdde1);
+    background-size: 400% 400%;
+    animation: bgMove 10s ease infinite;
+}
 
-        h1{
-            color: #ff4f81;
-        }
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
 
-        p{
-            font-size: 18px;
-        }
+.card{
+    width:350px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    color:white;
+    box-shadow:0 0 30px rgba(0,0,0,0.15);
+    animation: float 3s ease-in-out infinite;
+}
 
-        button{
-            background: #ff4f81;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
+}
 
-        button:hover{
-            background: #ff2e6d;
-        }
-    </style>
+h1{
+    font-size:38px;
+    margin-bottom:20px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px white;
+    }
+    to{
+        text-shadow:0 0 25px #ff4d88;
+    }
+}
+
+p{
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4d88;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#ff4d88;
+    color:white;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation: fall linear infinite;
+    top:-10%;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="card">
-        <h1>Hello Love ❤️</h1>
+<div class="card">
+    <h1>Hi Love ❤️</h1>
 
-        <p>
-            I made this little website just for you.
-            Thank you for always making me happy :)
-        </p>
+    <p>
+        I made this tiny website just for you.<br>
+        Thank you for being my favorite person ever :)
+    </p>
 
-        <button onclick="showMessage()">
-            Click Me
-        </button>
-    </div>
+    <button onclick="showLove()">
+        Click Me
+    </button>
+</div>
 
-    <script>
-        function showMessage(){
-            alert("I love you so much ❤️");
-        }
-    </script>
+<script>
+function showLove(){
+    alert("I love you sooo much ❤️");
+}
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+setInterval(createHeart, 250);
+</script>
 
 </body>
 </html>
