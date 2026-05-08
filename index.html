@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>For My Star⭐</title>
 
 <style>
 *{
@@ -32,8 +32,8 @@ body{
 
 .container{
     position:relative;
-    width:320px;
-    height:220px;
+    width:350px;
+    height:250px;
 }
 
 .envelope{
@@ -41,9 +41,9 @@ body{
     width:100%;
     height:100%;
     background:#ff6b9d;
-    border-radius:10px;
+    border-radius:12px;
     cursor:pointer;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
     overflow:hidden;
     transition:1s;
 }
@@ -51,14 +51,13 @@ body{
 .envelope::before{
     content:'';
     position:absolute;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
     background:#ff8fb1;
     clip-path:polygon(0 0, 50% 50%, 100% 0);
     transform-origin:top;
     transition:1s;
+    z-index:3;
 }
 
 .envelope.open::before{
@@ -67,17 +66,18 @@ body{
 
 .letter{
     position:absolute;
-    width:90%;
-    height:90%;
+    width:92%;
+    height:92%;
     background:white;
-    left:5%;
-    top:5%;
-    border-radius:10px;
-    padding:20px;
+    left:4%;
+    top:4%;
+    border-radius:12px;
+    padding:18px;
     text-align:center;
-    transform:translateY(100%);
+    transform:translateY(110%);
     transition:1s;
-    color:#ff4d88;
+    overflow-y:auto;
+    z-index:2;
 }
 
 .envelope.open .letter{
@@ -85,21 +85,21 @@ body{
 }
 
 h1{
-    margin-top:10px;
-    font-size:28px;
+    color:#ff4d88;
+    margin-bottom:15px;
 }
 
 p{
-    margin-top:15px;
-    line-height:1.5;
     color:#555;
+    line-height:1.6;
+    font-size:15px;
 }
 
 button{
     margin-top:20px;
-    padding:10px 20px;
+    padding:12px 24px;
     border:none;
-    border-radius:25px;
+    border-radius:30px;
     background:#ff4d88;
     color:white;
     font-size:16px;
@@ -108,7 +108,8 @@ button{
 }
 
 button:hover{
-    transform:scale(1.1);
+    transform:scale(1.08);
+    background:#ff2f75;
 }
 
 .hearts{
@@ -132,10 +133,27 @@ button:hover{
         transform:translateY(-10vh);
         opacity:1;
     }
+
     100%{
         transform:translateY(110vh);
         opacity:0;
     }
+}
+
+.tap-text{
+    position:absolute;
+    bottom:-40px;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:18px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{opacity:0.5;}
+    50%{opacity:1;}
+    100%{opacity:0.5;}
 }
 </style>
 </head>
@@ -145,22 +163,42 @@ button:hover{
 <div class="hearts"></div>
 
 <div class="container">
+
     <div class="envelope" onclick="openLetter()">
 
         <div class="letter">
-            <h1>Hi Love ❤️</h1>
+
+            <h1>Halloo! ❤️</h1>
 
             <p>
-                I made this little website just for you.<br><br>
-                Thank you for always making me smile and feel loved :)
+                Made this just for you! I just want you to know that I am thankful for having you in my life. You've witnessed 1/3 of my life.
+                <br><br>
+
+                Thank you for always understanding me, and staying by my side through everything. You deserve all the success in the world because of your beautiful heart.
+                <br><br>
+
+                I hope this special day brings you all the things that make you happy. And even if I can’t give you everything yet, I promise I’ll always try my best to make you feel loved every single day.
+                <br><br>
+
+                Please continue chasing your dreams, take care of yourself, and always do your best. I’ll always be proud of you no matter what.
+                <br><br>
+
+                Happy 19th Birthday!
+                <br><br>
             </p>
 
             <button onclick="showLove(event)">
-                Click Me
+                Click Me ❤️
             </button>
+
         </div>
 
     </div>
+
+    <div class="tap-text">
+        Tap the envelope ✉️
+    </div>
+
 </div>
 
 <script>
@@ -170,11 +208,13 @@ function openLetter(){
 
 function showLove(event){
     event.stopPropagation();
-    alert("I love you so much ❤️");
+    alert("I love you so much!!! ❤️");
 }
 
 function createHeart(){
+
     const heart = document.createElement("div");
+
     heart.classList.add("heart");
     heart.innerHTML = "❤";
 
